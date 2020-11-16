@@ -1,0 +1,48 @@
+/* 全局 css */
+@headerBgColor:rgb(255, 255, 255);
+@bodyColor:rgb(68, 68, 68);
+@BackgroundColor:rgb(222, 222, 222);
+@logoColor: rgb(0, 0, 0);
+@spanColor: rgb(119, 128, 135);
+@LinkVisitedColor: rgb(175, 185, 193);
+@LinkColor: rgb(119, 128, 135);
+@cardbgColor: rgb(255, 255, 255);
+
+:global(body) {
+  padding: 0;
+  margin: 0;
+  font-family: helvetica neue,luxi sans,dejavu sans,segoe ui,hiragino sans gb,microsoft yahei,sans-serif;
+  line-height: 1.6;
+  font-size: 14px;
+  color: @bodyColor;
+  background-color:  @BackgroundColor; 
+  transition: all 0.5s ease-out;
+}
+
+.header{
+  display: flex;
+  box-align:center;
+  align-items: center;
+  font-size: 1.1rem;
+  background-color: @headerBgColor;
+  border-bottom: 1px solid rgba(0,0,0,0.22);
+  padding:0.5rem 2rem;
+  .logo{
+    display:flex;
+    font-size:1.8rem;
+    font-weight: 800;
+    flex:1 1 auto
+  }
+  .logoNavLink{
+    color: @logoColor;
+    text-decoration: none;
+  }
+  .menuNavLink{
+    color: @LinkColor;
+    margin-right: 1rem;
+    text-decoration: none;
+  }
+  .menuNavLinkActive{
+    color: @LinkVisitedColor;
+  }
+}
