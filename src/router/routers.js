@@ -5,7 +5,7 @@ import Home from '@pages/home'
 import Login from '@pages/login'
 import Register from '@pages/register'
 import '@styles/globalStyle.less'
-import loadable from '@utils/loadable';
+import loadable from '@utils/loadable'
 
 // const Login = loadable(()=> import("@pages/login"))
 
@@ -15,9 +15,10 @@ export default function Routers() {
       <Navheader/>
         <Switch>
             <Route exact path='/' render={()=>{
-              return <Redirect to='/home'/>
+              return <Redirect to='/home/0'/>
             }}></Route>
-            <Route exact path='/home' component={Home}/>
+            <Route exact path='/home/:id' component={Home}/>
+            {/* <Route exact path='/home/topic/:id' component={Detail}/> */}
             <Route exact path='/login' component={Login}/>
             <Route exact path='/register' component={Register}/>
         </Switch>

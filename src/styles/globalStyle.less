@@ -15,8 +15,17 @@
   line-height: 1.6;
   font-size: 14px;
   color: @bodyColor;
-  background-color:  @BackgroundColor; 
   transition: all 0.5s ease-out;
+}
+
+:global(*){
+  box-sizing: border-box
+}
+:global(#root){
+    min-height: 100vh;
+    display: flex;
+    background-color: @BackgroundColor;
+    flex-direction: column;
 }
 
 .header{
@@ -46,3 +55,93 @@
     color: @LinkVisitedColor;
   }
 }
+
+.container{
+  display: flex;
+  max-width: 100%;
+  margin: 12px auto;
+  .content {
+    background-color: rgb(255, 255, 255);
+    padding: 0.8rem;
+    flex:1 1 auto
+  }
+  .rightBar{
+    flex:0 1 270px
+  }
+}
+
+.tabs{
+  display:flex;
+  flex-wrap: wrap;
+  .tabNavlink{
+    margin-right: 1rem;
+    padding: 0px 0.5rem;
+    border-radius: 0.2rem;
+    color: rgb(119, 128, 135);
+    text-decoration: none;
+  }
+  .tabNavlinkActive{
+    color: white;
+    background-color: rgb(51, 51, 68);
+    text-decoration: none;
+  }
+}
+
+.pageItem{
+  margin:0.5rem 0px;
+  .item{
+    display: flex;
+    box-align: center;
+    align-items: center;
+    .info{
+      flex: 1 1 auto;
+      margin: 0px 1rem;
+      .title{
+        font-size: 1.1rem;
+        text-decoration: none;
+        color: rgb(119, 128, 135);
+      }
+      .tag{
+        font-size: 0.8rem;
+        background-color: rgb(245, 245, 245);
+        margin-right: 8px;
+        padding: 0.2rem;
+        border-radius: 0.2rem;
+        .tagLink{
+          color: rgb(153, 153, 153);
+        }
+      }
+      .author{
+        .authorLink{
+          font-size: 0.8rem;
+          font-weight: bold;
+          color: rgb(119, 128, 135);
+          word-break: break-word;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .commentCount{
+    margin-left: 1rem;
+    :global(.site-badge-count-4 .ant-badge-count){
+      background-color: rgb(170, 176, 198);
+      color: white;
+    }
+  }
+}
+
+.pageItem::before{
+    display: block;
+    content: "";
+    background-color: rgb(245, 245, 245);
+    height: 1px;
+    margin: 0.5rem -0.8rem;
+}
+
+@media (min-width: 1024px){
+  .container {
+    width: 1024px;
+  }
+} 
+
