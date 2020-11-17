@@ -4,7 +4,7 @@ v2ex-react
 
 # 说明
 
-React + React-Router + Typescript + ant design + webpack4.0 脚手架
+React + React-Router + Redux + ant design + webpack4.0 脚手架
 使用 React hook 进行开发
 
 # 注意事项
