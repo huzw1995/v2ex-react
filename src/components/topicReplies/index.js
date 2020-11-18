@@ -16,6 +16,7 @@ function topicReplies(props){
                 replyContentObj.avatar = item.member.avatar_normal
                 replyContentObj.username = item.member.username
                 replyContentObj.content = item.content_rendered
+                replyContentObj.last_modified = item.last_modified
                 replyContentArr.push(replyContentObj)
                 replyContentObj = {}
             })

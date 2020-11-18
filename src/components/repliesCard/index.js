@@ -15,7 +15,7 @@ function repliesCard(props){
                 <div className={LightStyles.middle}>
                     <span>
                         <NavLink to='/register' className={LightStyles.replyMemberLink}>{props.username}</NavLink>
-                        <span className={LightStyles.ago}>2 小时 57 分钟前 via Android</span>
+                        <span className={LightStyles.ago}>{moment(props.last_modified*1000).fromNow()}</span>
                     </span>
                     <div className={LightStyles.replyContent} dangerouslySetInnerHTML={{__html:props.content}}/>
                 </div>
