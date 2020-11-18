@@ -1,6 +1,5 @@
 dist/
 temp/
-build/
 node_modules/
 .idea/
 .history/
