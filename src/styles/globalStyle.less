@@ -177,7 +177,18 @@
       }
     }
     .content{
+      display: flex;
+      justify-content: center;
       word-break: break-all;
+      :global(p){
+        flex:1 1 auto;
+        overflow: auto;
+        zoom: 1;
+        :global(img){
+          display: block;
+          max-width: 100%;
+        }
+      }
     }
     .memberLink{
       color: rgb(119, 128, 135);

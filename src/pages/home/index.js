@@ -8,6 +8,7 @@ function Home(props){
     const tabItemIdArr = ['/hot','/latest']
     const [content,setContent] = useState([])
     useEffect(()=>{
+        document.title = 'v2ex-react'
         axios.get('/api/topics' + tabItemIdArr[props.match.params.id]).then(responce=>{
             let topicArr = []
             let topicObj = {}
