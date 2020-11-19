@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import LightStyles from '@styles/globalStyle.less'
 import moment from '@utils/momentZH'
 function postCard(props){
-    console.log('props',props)
     return (
         <div className={LightStyles.postCard}>
             <div className={LightStyles.title}>

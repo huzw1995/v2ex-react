@@ -114,7 +114,8 @@
     box-align: center;
     align-items: center;
     .info{
-      flex: 1 1 auto;
+      flex: 1 100 auto;
+      max-width: 100%;
       margin: 0px 1rem;
       .title{
         font-size: 1.1rem;
@@ -178,10 +179,12 @@
     }
     .content{
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       word-break: break-all;
       :global(p){
         flex:1 1 auto;
+        width:100%;
         overflow: auto;
         zoom: 1;
         :global(img){
@@ -247,7 +250,14 @@
         margin-top: 8px;
         word-break: break-all;
       }
+      :global(.site-badge-count-4 .ant-badge-count){
+        background-color: #f0f0f0;
+        color: #ccc;
+      }
     }
+  }
+  :global(.ant-pagination){
+    float: right;
   }
 }
 
