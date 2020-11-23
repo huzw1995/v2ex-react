@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import LightStyles from '@styles/globalStyle.less'
+import LightStyles from '@styles/lightStyle.less'
+import DarkStyles from '@styles/darkStyle.less'
 import axios from 'axios'
 
 function siteStats(props){

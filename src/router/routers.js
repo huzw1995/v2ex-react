@@ -6,7 +6,7 @@ import Login from '@pages/login'
 import Register from '@pages/register'
 import Detail from '@pages/topicDetail'
 import Member from '@pages/memberDetail'
-import '@styles/globalStyle.less'
+import '@styles/lightStyle.less'
 import initNprogress from '@utils/nProgress'
 import loadable from '@utils/loadable'
 

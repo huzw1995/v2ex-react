@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
-import Styles from '@styles/globalStyle.less'
+import LightStyles from '@styles/lightStyle.less'
+import DarkStyles from '@styles/darkStyle.less'
 import { Avatar } from 'antd'
 import moment from '@utils/momentZH'
 import axios from 'axios'
@@ -18,16 +19,16 @@ function MemberDetail(props){
         })
     },[])
     return (
-        <div className={Styles.memberContainer}>
-            <div className={Styles.box}>
+        <div className={LightStyles.memberContainer}>
+            <div className={LightStyles.box}>
                 <Avatar src={avatar}
                             shape={'square'}
                             size={82}
                 />
-                <div className={Styles.content}>
+                <div className={LightStyles.content}>
                     <h1>{username}</h1>
                     <div>V2EX 第 {id} 号会员</div>
-                    <div id={Styles.createdTime}>加入于 {created && moment(created*1000).format().split('T').join(' ')}</div>
+                    <div id={LightStyles.createdTime}>加入于 {created && moment(created*1000).format().split('T').join(' ')}</div>
                 </div>
             </div>
         </div>

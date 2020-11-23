@@ -4,8 +4,8 @@ import axios from 'axios'
 import PostCard from '@components/postCard'
 import TopicReplies from '@components/topicReplies'
 import topicContext from './topicContext'
-import classnames from 'classnames'
-import Styles from '@styles/globalStyle.less'
+import LightStyles from '@styles/lightStyle.less'
+import DarkStyles from '@styles/darkStyle.less'
 
 function topicDetial(props){
     const [topicContent,setTopicContent] = useState({})
@@ -29,7 +29,7 @@ function topicDetial(props){
                 topicId:props.match.params.id
             }}
         >
-            <div className={Styles.container} style={{flexWrap:'wrap'}}>
+            <div className={LightStyles.container} style={{flexWrap:'wrap'}}>
                 <PostCard {...topicContent}/>
                 <TopicReplies {...repliesContent}/>
             </div>

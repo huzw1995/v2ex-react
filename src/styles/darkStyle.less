@@ -1,0 +1,26 @@
+/* 全局 css */
+@headerBgColor:rgb(0, 0, 0);
+@bodyColor:rgb(238, 238, 238);
+@BackgroundColor:rgb(0, 0, 0);
+@logoColor: rgb(255, 255, 255);
+@spanColor: rgb(119, 128, 135);
+@LinkVisitedColor: rgb(175, 185, 193);
+@LinkColor: rgb(119, 128, 135);
+@cardbgColor: rgb(255, 255, 255);
+
+:global(body.dark) {
+  padding: 0;
+  margin: 0;
+  font-family: helvetica neue,luxi sans,dejavu sans,segoe ui,hiragino sans gb,microsoft yahei,sans-serif;
+  line-height: 1.6;
+  font-size: 14px;
+  color: @bodyColor;
+  transition: all 0.5s ease-out;
+}
+
+:global(#root.dark){
+  min-height: 100vh;
+  display: flex;
+  background-color: @BackgroundColor;
+  flex-direction: column;
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Styles from '@styles/globalStyle.less'
+import LightStyles from '@styles/lightStyle.less'
+import DarkStyles from '@styles/darkStyle.less'
+import { connect } from 'react-redux'
 import Tabs from '@components/Tabs'
 import axios from 'axios'
 import PageItem from '@components/pageItem'
@@ -30,15 +32,9 @@ function Home(props){
             setContent(topicArr)
         })
     },[props.match.params.id])
-    useEffect(()=>{
-        const handleWindowResize = () => throttle(setWidth(window.innerWidth),500)
-        window.addEventListener('resize',handleWindowResize)
-        return () => window.removeEventListener('resize',handleWindowResize)
-    },[])
     return (
-
-        <div className={Styles.container}>
-            <div className={Styles.content}>
+        <div className={LightStyles.container}>
+            <div className={LightStyles.content}>
                 <Tabs/>
                 {
                     content.map((item,index)=>{
@@ -46,7 +42,7 @@ function Home(props){
                     })
                 }
             </div>
-            {width < 857 ? <div/> : <div className={Styles.rightBar}>
+            {width < 857 ? <div/> : <div className={LightStyles.rightBar}>
                 <SiteStats/>
             </div>
             }
@@ -54,4 +50,10 @@ function Home(props){
     )
 }
 
-export default Home
+const mapStateToProps = (state) =>{
+    return {
+        switch:state.switchDarkMode
+    }
+}
+
+export default connect(mapStateToProps,null)(Home)

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LightStyles from '@styles/globalStyle.less'
+import LightStyles from '@styles/lightStyle.less'
+import DarkStyles from '@styles/darkStyle.less'
 import moment from '@utils/momentZH'
 function postCard(props){
     return (
