@@ -3,10 +3,13 @@ import Styles from '@styles/globalStyle.less'
 import Tabs from '@components/Tabs'
 import axios from 'axios'
 import PageItem from '@components/pageItem'
+import SiteStats from '@components/siteStats'
+import throttle from '@utils/throttle'
 
 function Home(props){
     const tabItemIdArr = ['/hot','/latest']
     const [content,setContent] = useState([])
+    const [width, setWidth] = useState(window.innerWidth)
     useEffect(()=>{
         document.title = 'v2ex-react'
         axios.get('/api/topics' + tabItemIdArr[props.match.params.id]).then(responce=>{
@@ -27,7 +30,13 @@ function Home(props){
             setContent(topicArr)
         })
     },[props.match.params.id])
+    useEffect(()=>{
+        const handleWindowResize = () => throttle(setWidth(window.innerWidth),500)
+        window.addEventListener('resize',handleWindowResize)
+        return () => window.removeEventListener('resize',handleWindowResize)
+    },[])
     return (
+
         <div className={Styles.container}>
             <div className={Styles.content}>
                 <Tabs/>
@@ -37,8 +46,10 @@ function Home(props){
                     })
                 }
             </div>
-            <div className={Styles.rightBar}>
+            {width < 857 ? <div/> : <div className={Styles.rightBar}>
+                <SiteStats/>
             </div>
+            }
         </div>
     )
 }

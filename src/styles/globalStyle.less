@@ -261,6 +261,35 @@
   }
 }
 
+.box{
+  background-color: #fff;
+  margin:0 10px;
+  .cell{
+    padding:10px;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+    color:#ccc;
+    .row{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      .topic{
+        padding:5px;
+        color:#999;
+        flex:0 1 auto;
+      }
+      .number{
+        padding:5px;
+        color: black;
+        font-weight: bold;
+        flex:1 0 auto;
+      }
+    }
+  }
+}
+
 @media (min-width: 1024px){
   .container {
     width: 1024px;
