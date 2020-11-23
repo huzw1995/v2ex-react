@@ -22,7 +22,7 @@ function siteStats(props){
                         注册会员
                     </div>
                     <div className={LightStyles.number}>
-                        {topicNumber}
+                        {memberNumber}
                     </div>
                 </div>
                 <div className={LightStyles.row}>
@@ -30,7 +30,7 @@ function siteStats(props){
                         主题
                     </div>
                     <div className={LightStyles.number}>
-                        {memberNumber}
+                        {topicNumber}
                     </div>
                 </div>
             </div>
