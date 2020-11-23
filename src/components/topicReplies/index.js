@@ -25,6 +25,17 @@ function topicReplies(props){
     const onChange = (page)=>{
         setPage(page)
     }
+
+    const memberLinkHashConverter = () =>{
+        let aTags = document.querySelectorAll('.' + LightStyles.replyContent + ' > a')
+        aTags.forEach(item=>{
+            let href = item.getAttribute('href')
+            if(href.substr(0,7)==='/member'){
+                item.setAttribute('href','/#' + href)
+            }
+        })
+    }
+
     useEffect(()=>{
         let replyContentObj = {}
         axios.get('/api/replies/' + topicId +'?page=1&pagesize=60').then(responce=>{
@@ -37,8 +48,14 @@ function topicReplies(props){
                 replyContentObj = {}
             })
             setReplyContentArr([...replyContentArr])
+            memberLinkHashConverter()
         })
     },[topicId])
+
+    useEffect(()=>{
+        memberLinkHashConverter()
+    },[currentPage])
+
     return (
         <div className={LightStyles.repliesCard}>
             <div className={LightStyles.replyCount}>

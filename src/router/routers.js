@@ -5,6 +5,7 @@ import Home from '@pages/home'
 import Login from '@pages/login'
 import Register from '@pages/register'
 import Detail from '@pages/topicDetail'
+import Member from '@pages/memberDetail'
 import '@styles/globalStyle.less'
 import initNprogress from '@utils/nProgress'
 import loadable from '@utils/loadable'
@@ -22,6 +23,7 @@ export default function Routers() {
             }}></Route>
             <Route exact path='/home/:id' component={Home}/>
             <Route exact path='/topic/:id' component={Detail}/>
+            <Route exact path='/member/:id' component={Member}/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/register' component={Register}/>
         </Switch>

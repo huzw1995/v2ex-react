@@ -7,7 +7,7 @@ function postCard(props){
         <div className={LightStyles.postCard}>
             <div className={LightStyles.title}>
                 <h1>{props.title}</h1>
-                <NavLink className={LightStyles.memberLink} to={'/register'}>{props.username}</NavLink>
+                <NavLink className={LightStyles.memberLink} to={'/member/' + props.username}>{props.username}</NavLink>
                 <span className= {LightStyles.smallInfo}> · {props.created && moment(props.created*1000).fromNow()}</span>
             </div>
             <div className={LightStyles.content} dangerouslySetInnerHTML={{__html:props.contentHTML}}/>

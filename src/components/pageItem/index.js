@@ -16,10 +16,10 @@ function pageItem(props){
                     <NavLink className={LightStyles.title} to={'/topic/'+props.id}>{props.title}</NavLink>
                     <div>
                         <span className={LightStyles.tag}>
-                            <NavLink to='/register' className={LightStyles.tagLink}>{props.nodeName}</NavLink>
+                            <NavLink to='/' className={LightStyles.tagLink}>{props.nodeName}</NavLink>
                         </span>
                         <span className={LightStyles.author}>
-                            <NavLink to='/register' className={LightStyles.authorLink}>{props.userName}</NavLink>
+                            <NavLink to={'/member/' + props.userName} className={LightStyles.authorLink}>{props.userName}</NavLink>
                         </span>
                         <span className={LightStyles.information}>
                             &nbsp;•&nbsp; {moment(props.last_modified*1000).fromNow()} &nbsp;•&nbsp; 最后回复来自&nbsp; 
