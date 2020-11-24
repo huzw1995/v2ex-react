@@ -6,6 +6,7 @@ v2ex-react
 
 React + React-Router + Redux + ant design + webpack4.0 脚手架
 使用 React hook 进行开发
+服务端需配合 https://github.com/IndexXuan/v2ex-api-bridge 进行使用
 
 # 注意事项
 
