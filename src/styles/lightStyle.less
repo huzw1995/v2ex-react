@@ -17,7 +17,6 @@
   color: @bodyColor;
   transition: all 0.5s ease-out;
 }
-
 :global(*){
   box-sizing: border-box
 }
@@ -60,7 +59,7 @@
   }
   .menuNavLink{
     color: @LinkColor;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     text-decoration: none;
   }
   .menuNavLinkActive{
@@ -75,8 +74,10 @@
   margin: 12px auto;
   .content {
     background-color: rgb(255, 255, 255);
+    margin:0 0.8rem;
     padding: 0.8rem;
-    flex:1 1 auto
+    flex:1 1 auto;
+    max-width:768px
   }
   .rightBar{
     flex:0 1 270px
@@ -319,6 +320,12 @@
 @media (min-width: 1024px){
   .container {
     width: 1024px;
+  }
+} 
+
+@media (max-width: 1024px){
+  .container {
+    width: 100%;
   }
 } 
 

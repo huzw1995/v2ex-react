@@ -32,6 +32,11 @@ function Home(props){
             setContent(topicArr)
         })
     },[props.match.params.id])
+    useEffect(()=>{
+        const handleWindowResize = () => throttle(setWidth(window.innerWidth),500)
+        window.addEventListener('resize',handleWindowResize)
+        return () => window.removeEventListener('resize',handleWindowResize)
+    },[])
     return (
         <div className={LightStyles.container}>
             <div className={LightStyles.content}>
