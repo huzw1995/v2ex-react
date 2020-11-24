@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios'
 import PostCard from '@components/postCard'
 import TopicReplies from '@components/topicReplies'
+import { connect } from 'react-redux'
 import topicContext from './topicContext'
 import LightStyles from '@styles/lightStyle.less'
 import DarkStyles from '@styles/darkStyle.less'
 
 function topicDetial(props){
+    let Styles = props.switch.darkMode ? DarkStyles : LightStyles
     const [topicContent,setTopicContent] = useState({})
     const [repliesContent,setRepliesContent] = useState({})
     useEffect(()=>{
@@ -29,7 +31,7 @@ function topicDetial(props){
                 topicId:props.match.params.id
             }}
         >
-            <div className={LightStyles.container} style={{flexWrap:'wrap'}}>
+            <div className={Styles.container} style={{flexWrap:'wrap'}}>
                 <PostCard {...topicContent}/>
                 <TopicReplies {...repliesContent}/>
             </div>
@@ -37,4 +39,10 @@ function topicDetial(props){
     )
 }
 
-export default topicDetial
+const mapStateToProps = (state) =>{
+    return {
+        switch:state.switchDarkMode
+    }
+}
+
+export default connect(mapStateToProps,null)(topicDetial)

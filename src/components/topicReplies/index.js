@@ -6,6 +6,7 @@ import DarkStyles from '@styles/darkStyle.less'
 import RepliesCard from '@components/repliesCard'
 import _ from 'lodash'
 import moment from '@utils/momentZH'
+import { connect } from 'react-redux'
 import axios from 'axios'
 import topicContext from '@pages/topicDetail/topicContext'
 
@@ -13,6 +14,7 @@ function topicReplies(props){
     const {topicId} = useContext(topicContext)
     const [replyContentArr,setReplyContentArr] = useState([])
     const [currentPage,setPage] = useState(1)
+    let Styles = props.switch.darkMode ? DarkStyles : LightStyles
     const total = useMemo(()=>{
         return replyContentArr.length
     })
@@ -58,8 +60,8 @@ function topicReplies(props){
     },[currentPage])
 
     return (
-        <div className={LightStyles.repliesCard}>
-            <div className={LightStyles.replyCount}>
+        <div className={Styles.repliesCard}>
+            <div className={Styles.replyCount}>
                 {props.replies} 条回复  •  {props.last_touched && moment(props.last_touched*1000).format().split('T').join(' ')}
             </div>
             {
@@ -75,9 +77,16 @@ function topicReplies(props){
                         defaultCurrent={1}
                         defaultPageSize={60}
                         onChange={onChange}
+                        className={Styles.darkmode}
                         />
         </div>
     )
 }
 
-export default topicReplies
+const mapStateToProps = (state) =>{
+    return {
+        switch:state.switchDarkMode
+    }
+}
+
+export default connect(mapStateToProps,null)(topicReplies)

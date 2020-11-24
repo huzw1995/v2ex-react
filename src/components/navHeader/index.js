@@ -4,11 +4,11 @@ import { Switch } from 'antd';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { switchDarkMode } from '@redux/actions'
-import classnames from 'classnames'
 import LightStyles from '@styles/lightStyle.less'
 import DarkStyles from '@styles/darkStyle.less'
 
 function navHeader(props){
+    let Styles = props.switch.darkMode ? DarkStyles : LightStyles
     console.log('navheader',props)
     const onChange = ()=>{
         console.log(props.switch)
@@ -24,15 +24,15 @@ function navHeader(props){
         }
     },[props.switch.darkMode])
     return (
-        <div className={LightStyles.header}>
-            <div className={LightStyles.logo}>
-                <NavLink className={LightStyles.logoNavLink} to='/home/0'>V2EX</NavLink>
+        <div className={Styles.header}>
+            <div className={Styles.logo}>
+                <NavLink className={Styles.logoNavLink} to='/home/0'>V2EX</NavLink>
             </div>
             <div className="menu">
-                <span className={LightStyles.switchTitle}>夜间模式:</span><Switch defaultChecked={false} size={'small'} onChange={onChange} style={{marginRight:'8px'}}/>
-                <NavLink className={LightStyles.menuNavLink} activeClassName={LightStyles.menuNavLinkActive} to='/home/0'>首页</NavLink>
-                <NavLink className={LightStyles.menuNavLink} activeClassName={LightStyles.menuNavLinkActive} to='/login'>登录</NavLink>
-                <NavLink className={LightStyles.menuNavLink} activeClassName={LightStyles.menuNavLinkActive} to='/register'>注册</NavLink>
+                <span className={Styles.switchTitle}>夜间模式:</span><Switch defaultChecked={false} size={'small'} onChange={onChange} style={{marginRight:'8px'}}/>
+                <NavLink className={Styles.menuNavLink} activeClassName={Styles.menuNavLinkActive} to='/home/0'>首页</NavLink>
+                <NavLink className={Styles.menuNavLink} activeClassName={Styles.menuNavLinkActive} to='/login'>登录</NavLink>
+                <NavLink className={Styles.menuNavLink} activeClassName={Styles.menuNavLinkActive} to='/register'>注册</NavLink>
             </div>
         </div>
     )

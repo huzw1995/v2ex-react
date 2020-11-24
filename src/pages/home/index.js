@@ -12,6 +12,7 @@ function Home(props){
     const tabItemIdArr = ['/hot','/latest']
     const [content,setContent] = useState([])
     const [width, setWidth] = useState(window.innerWidth)
+    let Styles = props.switch.darkMode ? DarkStyles : LightStyles
     useEffect(()=>{
         document.title = 'v2ex-react'
         axios.get('/api/topics' + tabItemIdArr[props.match.params.id]).then(responce=>{
@@ -38,8 +39,8 @@ function Home(props){
         return () => window.removeEventListener('resize',handleWindowResize)
     },[])
     return (
-        <div className={LightStyles.container}>
-            <div className={LightStyles.content}>
+        <div className={Styles.container}>
+            <div className={Styles.content}>
                 <Tabs/>
                 {
                     content.map((item,index)=>{
@@ -47,7 +48,7 @@ function Home(props){
                     })
                 }
             </div>
-            {width < 857 ? <div/> : <div className={LightStyles.rightBar}>
+            {width < 857 ? <div/> : <div className={Styles.rightBar}>
                 <SiteStats/>
             </div>
             }
