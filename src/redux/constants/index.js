@@ -1,1 +1,0 @@
-export const SWITCH_DARKMODE = 'SWITCH_DARKMODE'

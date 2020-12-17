@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import LightStyles from '@styles/lightStyle.less'
 import DarkStyles from '@styles/darkStyle.less'
-import { connect } from 'react-redux'
 import Tabs from '@components/Tabs'
+import { ThemeContext } from '@pages/context/context'
 import axios from 'axios'
 import PageItem from '@components/pageItem'
 import SiteStats from '@components/siteStats'
@@ -12,7 +12,8 @@ function Home(props){
     const tabItemIdArr = ['/hot','/latest']
     const [content,setContent] = useState([])
     const [width, setWidth] = useState(window.innerWidth)
-    let Styles = props.switch.darkMode ? DarkStyles : LightStyles
+    const { darkMode } = useContext(ThemeContext)
+    let Styles = darkMode ? DarkStyles : LightStyles
     useEffect(()=>{
         document.title = 'v2ex-react'
         axios.get('/api/topics' + tabItemIdArr[props.match.params.id]).then(responce=>{
@@ -56,10 +57,4 @@ function Home(props){
     )
 }
 
-const mapStateToProps = (state) =>{
-    return {
-        switch:state.switchDarkMode
-    }
-}
-
-export default connect(mapStateToProps,null)(Home)
+export default Home

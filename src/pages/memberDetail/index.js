@@ -1,7 +1,7 @@
-import React,{useEffect, useState} from 'react';
+import React,{ useEffect, useState, useContext } from 'react';
 import LightStyles from '@styles/lightStyle.less'
-import { connect } from 'react-redux'
 import DarkStyles from '@styles/darkStyle.less'
+import { ThemeContext }  from '@pages/context/context'
 import { Avatar } from 'antd'
 import moment from '@utils/momentZH'
 import axios from 'axios'
@@ -11,7 +11,8 @@ function MemberDetail(props){
     const [username,setUsername] = useState('')
     const [id,setId] = useState(0)
     const [created,setCreated] = useState(null)
-    let Styles = props.switch.darkMode ? DarkStyles : LightStyles
+    const { darkMode } = useContext(ThemeContext)
+    let Styles = darkMode ? DarkStyles : LightStyles
     useEffect(()=>{
         axios.get('/api/members/username/' + props.match.params.id).then(response=>{
             setAvatar(response.data.avatar_large)
@@ -37,10 +38,4 @@ function MemberDetail(props){
     )
 }
 
-const mapStateToProps = (state) =>{
-    return {
-        switch:state.switchDarkMode
-    }
-}
-
-export default connect(mapStateToProps,null)(MemberDetail)
+export default MemberDetail

@@ -1,17 +1,18 @@
-import React,{useEffect, useState} from 'react';
+import React,{ useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios'
 import PostCard from '@components/postCard'
 import TopicReplies from '@components/topicReplies'
-import { connect } from 'react-redux'
 import topicContext from './topicContext'
+import { ThemeContext }  from '@pages/context/context'
 import LightStyles from '@styles/lightStyle.less'
 import DarkStyles from '@styles/darkStyle.less'
 
 function topicDetial(props){
-    let Styles = props.switch.darkMode ? DarkStyles : LightStyles
     const [topicContent,setTopicContent] = useState({})
     const [repliesContent,setRepliesContent] = useState({})
+    const { darkMode } = useContext(ThemeContext)
+    let Styles = darkMode ? DarkStyles : LightStyles
     useEffect(()=>{
         axios.get('/api/topics/' + props.match.params.id).then(response=>{
             topicContent.title = response.data[0].title
@@ -39,10 +40,4 @@ function topicDetial(props){
     )
 }
 
-const mapStateToProps = (state) =>{
-    return {
-        switch:state.switchDarkMode
-    }
-}
-
-export default connect(mapStateToProps,null)(topicDetial)
+export default topicDetial
