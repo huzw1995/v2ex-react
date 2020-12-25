@@ -1,14 +1,15 @@
-# 项目
+# umi project
 
-v2ex-react
+## Getting Started
 
-# 说明
+Install dependencies,
 
-React + React-Router + ant design4 + webpack4 脚手架
-使用 React hook 进行开发
-服务端需配合 https://github.com/IndexXuan/v2ex-api-bridge 进行使用
+```bash
+$ yarn
+```
 
-# 注意事项
+Start the dev server,
 
-1. webpack4中除了正常安装 webpack 之外，需要再单独安一个 webpack-cli
-2. 启动 devServer 需要安装 webpack-dev-server
+```bash
+$ yarn start
+```
