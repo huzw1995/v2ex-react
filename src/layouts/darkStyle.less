@@ -1,12 +1,12 @@
 /* 全局 css */
-@headerbgcolor:rgb (0, 0, 0);
-@bodycolor:rgb (238, 238, 238);
-@backgroundcolor:rgb (0, 0, 0);
+@headerBgColor:rgb (0, 0, 0);
+@bodyColor:rgb (238, 238, 238);
+@backGroundColor:rgb (0, 0, 0);
 @logoColor: rgb(255, 255, 255);
 @spanColor: rgb(119, 128, 135);
 @LinkVisitedColor: rgb(175, 185, 193);
 @LinkColor: rgb(119, 128, 135);
-@cardbgColor: rgb(0, 0, 0);
+@cardBgColor: rgb(0, 0, 0);
 
 :global(body.dark) {
   padding: 0;
@@ -22,7 +22,7 @@
 :global(#root.dark) {
   min-height: 100vh;
   display: flex;
-  background-color: @BackgroundColor;
+  background-color: @backGroundColor;
   flex-direction: column;
 }
 
@@ -64,7 +64,7 @@
   // flex-wrap: wrap;
   margin: 12px auto;
   .content {
-    background-color: @cardbgColor;
+    background-color: @cardBgColor;
     margin: 0 0.8rem;
     padding: 0.8rem;
     flex: 1 1 auto;
