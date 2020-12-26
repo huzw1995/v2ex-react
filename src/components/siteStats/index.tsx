@@ -4,17 +4,15 @@ import LightStyles from '@/layouts/lightStyle.less';
 import DarkStyles from '@styles/darkStyle.less';
 import axios from 'axios';
 
-const siteStats: React.FC = () => {
-  const [topicNumber, setTopicNumber] = useState(0);
-  const [memberNumber, setMemberNumber] = useState(0);
+interface Props {
+  topicNumber : number,
+  memberNumber : number
+}
+const siteStats: React.FC<Props> = (props) => {
+  
   //   const { darkMode } = useContext(ThemeContext)
   //   let Styles = darkMode ? DarkStyles : LightStyles;
-  useEffect(() => {
-    axios.get('/api/site/stats').then((response) => {
-      setTopicNumber(response.data.topic_max);
-      setMemberNumber(response.data.member_max);
-    });
-  }, []);
+  const { topicNumber, memberNumber } = props
   return (
     <div className={LightStyles.box}>
       <div className={LightStyles.cell}>社区运行状况</div>

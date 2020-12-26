@@ -12,23 +12,28 @@ import SiteStats from '@/components/siteStats';
 import throttle from '@/utils/throttle';
 
 type Props = {
-  topics: Object;
+  topics: TopicState;
   dispatch: Dispatch;
   match: any;
 };
 
 const Home: React.FC<Props> = (props) => {
   const [width, setWidth] = useState(window.innerWidth);
-  const { topics, dispatch } = props;
+  const { dispatch } = props;
+  const { data, topicNumber, memberNumber } = props.topics
   // const { darkMode } = useContext(ThemeContext)
   // let Styles = darkMode ? DarkStyles : LightStyles
-  console.log('data', topics);
   const getRemoteTopic = (id: number) => {
     dispatch({
       type: 'topics/getRemote',
       payload: {
         id,
       },
+    });
+  };
+  const getRemoteSiteStats = () => {
+    dispatch({
+      type: 'topics/getRemoteStats'
     });
   };
   useEffect(() => {
@@ -38,14 +43,15 @@ const Home: React.FC<Props> = (props) => {
   useEffect(() => {
     const handleWindowResize = () => throttle(setWidth(window.innerWidth), 500);
     window.addEventListener('resize', handleWindowResize);
+    getRemoteSiteStats();
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
   return (
     <div className={LightStyles.container}>
       <div className={LightStyles.content}>
         <Tabs />
-        {topics.data &&
-          topics.data.map((item, index) => {
+        {data &&
+          data.map((item, index) => {
             return <PageItem key={index} {...item} />;
           })}
       </div>
@@ -53,7 +59,7 @@ const Home: React.FC<Props> = (props) => {
         <div />
       ) : (
         <div className={LightStyles.rightBar}>
-          <SiteStats />
+          <SiteStats topicNumber = {topicNumber} memberNumber = {memberNumber}/>
         </div>
       )}
     </div>

@@ -33,3 +33,8 @@ export const getRemoteTopic = async (id: number) => {
     })
     .catch((err) => false);
 };
+export const getRemoteSiteStats = async () => {
+  return axios.get('/api/site/stats').then((response) => {
+    return response.data
+  }).catch((err)=>false);
+}
