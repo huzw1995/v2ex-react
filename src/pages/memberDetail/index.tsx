@@ -1,0 +1,41 @@
+import React,{ useEffect, useState, useContext } from 'react';
+import LightStyles from '@/layouts/lightStyle.less'
+import DarkStyles from '@/layouts/darkStyle.less'
+import { ThemeContext }  from '@/theme/context'
+import { Avatar } from 'antd'
+import moment from '@/utils/momentZH'
+import axios from 'axios'
+
+function MemberDetail(props:any){
+    const [avatar,setAvatar] = useState(null)
+    const [username,setUsername] = useState('')
+    const [id,setId] = useState(0)
+    const [created,setCreated] = useState(null)
+    const { darkMode } = useContext(ThemeContext)
+    let Styles = darkMode ? DarkStyles : LightStyles
+    useEffect(()=>{
+        axios.get('/api/members/username/' + props.match.params.id).then(response=>{
+            setAvatar(response.data.avatar_large)
+            setUsername(response.data.username)
+            setId(response.data.id)
+            setCreated(response.data.created)
+        })
+    },[])
+    return (
+        <div className={Styles.memberContainer}>
+            <div className={Styles.box}>
+                <Avatar src={avatar}
+                            shape={'square'}
+                            size={82}
+                />
+                <div className={Styles.content}>
+                    <h1>{username}</h1>
+                    <div>V2EX 第 {id} 号会员</div>
+                    <div id={Styles.createdTime}>加入于 {created && moment(created*1000).format().split('T').join(' ')}</div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default MemberDetail

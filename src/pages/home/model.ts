@@ -5,7 +5,7 @@ import { getRemoteTopic,getRemoteSiteStats } from './service';
 export interface TopicState {
   data?: Array<Object>,
   topicNumber?: number,
-  memberNumber?: number
+  memberNumber?: number,
 }
 
 interface TopicModelType {
@@ -44,6 +44,7 @@ const TopicModel: TopicModelType = {
         yield put({
           type: 'getList',
           payload: data,
+          done :true
         });
       }
     },

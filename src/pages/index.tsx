@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from './index.less';
+import Layouts from '@/layouts/index'
+import { ThemeProvider } from '@/theme/context'
 
-export default () => {
+export default (props:any) => {
   return (
-    <div>
-      <h1 className={styles.title}>Page index</h1>
-    </div>
+    <ThemeProvider>
+      <Layouts/>
+      {props.children}
+    </ThemeProvider>
   );
 }
