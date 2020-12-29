@@ -56,12 +56,14 @@ export default defineConfig({
         cacheGroups: {
           react: {
             name: "react",
+            chunks: 'all',
             test: /[\\/]node_modules[\\/](react)[\\/]/,
             priority: 12,
             enforce: true,
           },
           reactDom: {
             name: "react-dom",
+            chunks: 'all',
             test: /[\\/]node_modules[\\/](react-dom)[\\/]/,
             priority: 11,
             enforce: true,
@@ -71,6 +73,12 @@ export default defineConfig({
             chunks: 'all',
             test: /(@antd|antd|@ant-design)/,
             priority: 10,
+          },
+          echarts: {
+            name: "echarts",
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](echarts)[\\/]/,
+            priority: 9
           }
         },
       });
