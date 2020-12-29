@@ -7,7 +7,7 @@ export default defineConfig({
   routes: [
     {
       path: '/',
-      component: '@/pages',
+      component: '@/layouts',
       routes: [
         { exact: true, path: '/', redirect: '/home/0' },
         { exact: true, path: '/login', component: '@/pages/login' },

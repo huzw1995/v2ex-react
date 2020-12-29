@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { TopicState } from './model';
 import LightStyles from '@/layouts/lightStyle.less';
 import DarkStyles from '@/layouts/darkStyle.less';
@@ -55,22 +55,24 @@ const Home: React.FC<Props> = (props) => {
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
   return (
-    <div className={Styles.container}>
-      <div className={Styles.content}>
-        <Tabs />
-        {data &&
-          data.map((item, index) => {
-            return <PageItem key={index} {...item} />;
-          })}
-      </div>
-      {width < 857 ? (
-        <div />
-      ) : (
-        <div className={Styles.rightBar}>
-          <SiteStats topicNumber = {topicNumber} memberNumber = {memberNumber}/>
+    <Fragment>
+      <div className={Styles.container}>
+        <div className={Styles.content}>
+          <Tabs />
+          {data &&
+            data.map((item, index) => {
+              return <PageItem key={index} {...item} />;
+            })}
         </div>
-      )}
-    </div>
+        {width < 857 ? (
+          <div />
+        ) : (
+          <div className={Styles.rightBar}>
+            <SiteStats topicNumber = {topicNumber} memberNumber = {memberNumber}/>
+          </div>
+        )}
+      </div>
+    </Fragment>
   );
 };
 
